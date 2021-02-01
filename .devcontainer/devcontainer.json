@@ -21,5 +21,6 @@
   ],
   "workspaceFolder": "/workspace",
   "remoteUser": "node",
+  "postCreateCommand": "ssh-add /.ssh/id_rsa",
   "forwardPorts": [3000]
 }
