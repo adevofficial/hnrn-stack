@@ -1,0 +1,25 @@
+version: "3.6"
+services:
+  app-web:
+    build:
+      context: ./app-web/.devcontainer
+      dockerfile: Dockerfile
+    volumes:
+      # Mount the root folder that contains .git
+      - .:/workspace:cached
+    command: sleep infinity
+    links:
+      - graphql-engine
+      - hasura-backend-plus
+
+  backend:
+    build:
+      context: ./backend/.devcontainer
+      dockerfile: Dockerfile
+    volumes:
+      # Mount the root folder that contains .git
+      - .:/workspace:cached
+    command: sleep infinity
+    links:
+      - graphql-engine
+      - hasura-backend-plus
