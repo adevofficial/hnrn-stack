@@ -22,7 +22,7 @@
     "esbenp.prettier-vscode",
     "humao.rest-client"
   ],
-  "workspaceFolder": "/workspace/backend",
+  "workspaceFolder": "/workspace/app/backend",
   "remoteUser": "node",
   "forwardPorts": [3000]
 }

@@ -1,10 +1,10 @@
 {
-  "name": "App Web",
+  "name": "App Admin",
   "dockerComposeFile": [
     "../../../docker-compose.yml",
     "../../../docker-compose.devcontainer.yml"
   ],
-  "service": "app-web",
+  "service": "app-admin",
   "shutdownAction": "none",
   "extensions": [
 	"dbaeumer.vscode-eslint",
@@ -22,7 +22,7 @@
 	"esbenp.prettier-vscode",
 	"humao.rest-client"
 ],
-  "workspaceFolder": "/workspace/app/app-web",
+  "workspaceFolder": "/workspace/app/app-admin",
   "remoteUser": "node",
-  "forwardPorts": [3001]
+  "forwardPorts": [3002]
 }
