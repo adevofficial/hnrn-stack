@@ -1,8 +1,20 @@
 version: "3.6"
 services:
+  app-admin:
+    build:
+      context: ./app/app-admin/.devcontainer
+      dockerfile: Dockerfile
+    volumes:
+      # Mount the root folder that contains .git
+      - .:/workspace:cached
+    command: sleep infinity
+    links:
+      - graphql-engine
+      - hasura-backend-plus
+
   app-web:
     build:
-      context: ./app-web/.devcontainer
+      context: ./app/app-web/.devcontainer
       dockerfile: Dockerfile
     volumes:
       # Mount the root folder that contains .git
@@ -14,7 +26,7 @@ services:
 
   backend:
     build:
-      context: ./backend/.devcontainer
+      context: ./app/backend/.devcontainer
       dockerfile: Dockerfile
     volumes:
       # Mount the root folder that contains .git
