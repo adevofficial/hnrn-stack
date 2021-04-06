@@ -1,20 +1,25 @@
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Link, navigate, RouteComponentProps } from "@reach/router";
-import { Button, Card, Checkbox, Form, Input, notification } from "antd";
+import { Button, Card, Form, Input, notification } from "antd";
 import { auth } from "helpers/hbp-client";
-import { useAuth } from "libraries/auth/useAuth";
 import React, { useCallback } from "react";
 
-export default function LoginPage(props: RouteComponentProps) {
-  const { setUser } = useAuth();
-  const onSubmit = useCallback(async ({ email, password }) => {
+export default function RegisterPage(props: RouteComponentProps) {
+  const onSubmit = useCallback(async ({ email, password, display_name }) => {
     try {
-      const loginUser = await auth.login({ email, password });
-      setUser(loginUser.user);
+      await auth.register({
+        email,
+        password,
+        options: { userData: { display_name } },
+      });
+      notification.error({
+        message: "Register",
+        description: "Account created successfully ;)",
+      });
       navigate("/dashboard");
     } catch (error) {
       notification.error({
-        message: "Login",
+        message: "Register",
         description: error.response.data.message,
       });
     }
@@ -30,6 +35,15 @@ export default function LoginPage(props: RouteComponentProps) {
           size="large"
           onFinish={onSubmit}
         >
+          <Form.Item
+            name="display_name"
+            rules={[{ required: true, message: "Please input your Name!" }]}
+          >
+            <Input
+              prefix={<UserOutlined className="site-form-item-icon" />}
+              placeholder="Name"
+            />
+          </Form.Item>
           <Form.Item
             name="email"
             rules={[{ required: true, message: "Please input your email!" }]}
@@ -50,26 +64,14 @@ export default function LoginPage(props: RouteComponentProps) {
               placeholder="Password"
             />
           </Form.Item>
-          <Form.Item
-            style={{
-              marginBottom: 10,
-            }}
-          >
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <Form.Item name="remember" valuePropName="checked" noStyle>
-                <Checkbox>Remember me</Checkbox>
-              </Form.Item>
-              <Link to="/forgot-password">Forgot password</Link>
-            </div>
-          </Form.Item>
 
           <Form.Item style={{ marginBottom: 10 }}>
             <Button type="primary" htmlType="submit" style={{ width: "100%" }}>
-              Log in
+              Register
             </Button>
           </Form.Item>
           <div style={{ display: "flex", justifyContent: "center" }}>
-            <Link to="/register">Register now!</Link>
+            <Link to="/login">Already had a account ?</Link>
           </div>
         </Form>
       </Card>

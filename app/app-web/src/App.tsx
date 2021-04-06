@@ -1,14 +1,16 @@
-import React, { FC } from "react";
-import { Button } from "antd";
-import { Layout, Menu, Breadcrumb } from "antd";
-import { Router, Link } from "@reach/router";
-import LoginPage from "./pages/LoginPage";
-const { Header, Content, Footer } = Layout;
+import { GraphQLProvider } from "libraries/hasura-graphql/GraphQLProvider";
+import React from "react";
+import AppRouter from "Router";
+import { HASURA_BASE_URL } from "configs";
+import { auth } from "helpers/hbp-client";
+import { AuthProvider } from "libraries/auth/AuthProvider";
 
 const App = () => (
-  <Router>
-    <LoginPage path="/" />
-  </Router>
+  <AuthProvider auth={auth}>
+    <GraphQLProvider auth={auth} url={HASURA_BASE_URL}>
+      <AppRouter />
+    </GraphQLProvider>
+  </AuthProvider>
 );
 
 export default App;

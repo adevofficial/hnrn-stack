@@ -1,9 +1,10 @@
 version: "3.6"
 services:
   app:
-    build:
-      context: .
-      dockerfile: ./.devcontainer/Dockerfile
+    # build:
+    #   context: .
+    #   dockerfile: ./.devcontainer/Dockerfile
+    image: mcr.microsoft.com/vscode/devcontainers/typescript-node:0-14-buster
     volumes:
       - ${HOME}/.ssh:/.ssh
       - .:/workspace:cached
