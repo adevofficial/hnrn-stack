@@ -384,6 +384,27 @@
           }
         }
       }
+    },
+    "hbp-ra-auth": {
+      "root": "libs/hbp-ra-auth",
+      "sourceRoot": "libs/hbp-ra-auth/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/hbp-ra-auth/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/hbp-ra-auth"],
+          "options": {
+            "jestConfig": "libs/hbp-ra-auth/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   }
 }

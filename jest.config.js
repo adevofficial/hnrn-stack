@@ -10,5 +10,6 @@ module.exports = {
     '<rootDir>/libs/hbp-client',
     '<rootDir>/libs/common-configs',
     '<rootDir>/libs/common-helpers',
+    '<rootDir>/libs/hbp-ra-auth',
   ],
 };

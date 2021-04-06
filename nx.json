@@ -27,6 +27,7 @@
     "hbp-sdk": { "tags": [] },
     "hbp-client": { "tags": [] },
     "common-configs": { "tags": [] },
-    "common-helpers": { "tags": [] }
+    "common-helpers": { "tags": [] },
+    "hbp-ra-auth": { "tags": [] }
   }
 }

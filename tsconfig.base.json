@@ -23,7 +23,8 @@
       "@hnrn-stack/hbp-sdk": ["libs/hbp-sdk/src/index.ts"],
       "@hnrn-stack/hbp-client": ["libs/hbp-client/src/index.ts"],
       "@hnrn-stack/common-configs": ["libs/common-configs/src/index.ts"],
-      "@hnrn-stack/common-helpers": ["libs/common-helpers/src/index.ts"]
+      "@hnrn-stack/common-helpers": ["libs/common-helpers/src/index.ts"],
+      "@hnrn-stack/hbp-ra-auth": ["libs/hbp-ra-auth/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

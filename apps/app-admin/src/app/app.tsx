@@ -4,6 +4,10 @@ import React, { useEffect, useState } from 'react';
 import { Admin } from 'react-admin';
 import resources from '@app-admin/resources';
 import customBuildFields from '@app-admin/helpers/custom-build-fields';
+import { auth } from '@hnrn-stack/hbp-client';
+import { HBPAuthProvider } from '@hnrn-stack/hbp-ra-auth';
+
+const authProvider = new HBPAuthProvider(auth);
 
 export function App() {
   const [dataProvider, setDataProvider] = useState(null);
@@ -31,7 +35,11 @@ export function App() {
 
   if (!dataProvider) return <p>Loading...</p>;
 
-  return <Admin dataProvider={dataProvider}>{resources}</Admin>;
+  return (
+    <Admin authProvider={authProvider} dataProvider={dataProvider}>
+      {resources}
+    </Admin>
+  );
 }
 
 export default App;
