@@ -1,0 +1,30 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@hnrn-stack/auth": ["libs/auth/src/index.ts"],
+      "@hnrn-stack/hasura-graphql": ["libs/hasura-graphql/src/index.ts"],
+      "@hnrn-stack/custom-antd-form": ["libs/custom-antd-form/src/index.ts"],
+      "@app-web/*": ["apps/app-web/src/app/*"],
+      "@app-admin/*": ["apps/app-admin/src/app/*"],
+      "@hnrn-stack/hbp-sdk": ["libs/hbp-sdk/src/index.ts"],
+      "@hnrn-stack/hbp-client": ["libs/hbp-client/src/index.ts"],
+      "@hnrn-stack/common-configs": ["libs/common-configs/src/index.ts"],
+      "@hnrn-stack/common-helpers": ["libs/common-helpers/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

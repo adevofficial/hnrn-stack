@@ -1,0 +1,389 @@
+{
+  "version": 2,
+  "cli": { "defaultCollection": "@nrwl/react" },
+  "defaultProject": "app-web",
+  "generators": {
+    "@nrwl/react": {
+      "application": { "style": "less", "linter": "eslint", "babel": true },
+      "component": { "style": "less" },
+      "library": { "style": "less", "linter": "eslint" }
+    }
+  },
+  "projects": {
+    "app-web": {
+      "root": "apps/app-web",
+      "sourceRoot": "apps/app-web/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/web:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/app-web",
+            "index": "apps/app-web/src/index.html",
+            "main": "apps/app-web/src/main.tsx",
+            "polyfills": "apps/app-web/src/polyfills.ts",
+            "tsConfig": "apps/app-web/tsconfig.app.json",
+            "assets": [
+              "apps/app-web/src/favicon.ico",
+              "apps/app-web/src/assets"
+            ],
+            "styles": ["apps/app-web/src/styles.less"],
+            "scripts": [],
+            "webpackConfig": "@nrwl/react/plugins/webpack"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/app-web/src/environments/environment.ts",
+                  "with": "apps/app-web/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/web:dev-server",
+          "options": { "buildTarget": "app-web:build" },
+          "configurations": {
+            "production": { "buildTarget": "app-web:build:production" }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/app-web/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/app-web"],
+          "options": {
+            "jestConfig": "apps/app-web/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "app-web-e2e": {
+      "root": "apps/app-web-e2e",
+      "sourceRoot": "apps/app-web-e2e/src",
+      "projectType": "application",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/app-web-e2e/cypress.json",
+            "tsConfig": "apps/app-web-e2e/tsconfig.e2e.json",
+            "devServerTarget": "app-web:serve"
+          },
+          "configurations": {
+            "production": { "devServerTarget": "app-web:serve:production" }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": { "lintFilePatterns": ["apps/app-web-e2e/**/*.{js,ts}"] }
+        }
+      }
+    },
+    "auth": {
+      "root": "libs/auth",
+      "sourceRoot": "libs/auth/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": { "lintFilePatterns": ["libs/auth/**/*.{ts,tsx,js,jsx}"] }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/auth"],
+          "options": {
+            "jestConfig": "libs/auth/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "hasura-graphql": {
+      "root": "libs/hasura-graphql",
+      "sourceRoot": "libs/hasura-graphql/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/hasura-graphql/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/hasura-graphql"],
+          "options": {
+            "jestConfig": "libs/hasura-graphql/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "custom-antd-form": {
+      "root": "libs/custom-antd-form",
+      "sourceRoot": "libs/custom-antd-form/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/custom-antd-form/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/custom-antd-form"],
+          "options": {
+            "jestConfig": "libs/custom-antd-form/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "app-admin": {
+      "root": "apps/app-admin",
+      "sourceRoot": "apps/app-admin/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/web:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/app-admin",
+            "index": "apps/app-admin/src/index.html",
+            "main": "apps/app-admin/src/main.tsx",
+            "polyfills": "apps/app-admin/src/polyfills.ts",
+            "tsConfig": "apps/app-admin/tsconfig.app.json",
+            "assets": [
+              "apps/app-admin/src/favicon.ico",
+              "apps/app-admin/src/assets"
+            ],
+            "styles": ["apps/app-admin/src/styles.less"],
+            "scripts": [],
+            "webpackConfig": "@nrwl/react/plugins/webpack"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/app-admin/src/environments/environment.ts",
+                  "with": "apps/app-admin/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/web:dev-server",
+          "options": { "port": 4202, "buildTarget": "app-admin:build" },
+          "configurations": {
+            "production": { "buildTarget": "app-admin:build:production" }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/app-admin/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/app-admin"],
+          "options": {
+            "jestConfig": "apps/app-admin/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "app-admin-e2e": {
+      "root": "apps/app-admin-e2e",
+      "sourceRoot": "apps/app-admin-e2e/src",
+      "projectType": "application",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/app-admin-e2e/cypress.json",
+            "tsConfig": "apps/app-admin-e2e/tsconfig.e2e.json",
+            "devServerTarget": "app-admin:serve"
+          },
+          "configurations": {
+            "production": { "devServerTarget": "app-admin:serve:production" }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": { "lintFilePatterns": ["apps/app-admin-e2e/**/*.{js,ts}"] }
+        }
+      }
+    },
+    "backend": {
+      "root": "apps/backend",
+      "sourceRoot": "apps/backend/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/backend",
+            "main": "apps/backend/src/main.ts",
+            "tsConfig": "apps/backend/tsconfig.app.json",
+            "assets": ["apps/backend/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/backend/src/environments/environment.ts",
+                  "with": "apps/backend/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/node:execute",
+          "options": { "buildTarget": "backend:build" }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": { "lintFilePatterns": ["apps/backend/**/*.ts"] }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/backend"],
+          "options": {
+            "jestConfig": "apps/backend/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "hbp-sdk": {
+      "root": "libs/hbp-sdk",
+      "sourceRoot": "libs/hbp-sdk/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/hbp-sdk/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/hbp-sdk"],
+          "options": {
+            "jestConfig": "libs/hbp-sdk/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "hbp-client": {
+      "root": "libs/hbp-client",
+      "sourceRoot": "libs/hbp-client/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/hbp-client/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/hbp-client"],
+          "options": {
+            "jestConfig": "libs/hbp-client/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "common-configs": {
+      "root": "libs/common-configs",
+      "sourceRoot": "libs/common-configs/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/common-configs/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/common-configs"],
+          "options": {
+            "jestConfig": "libs/common-configs/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "common-helpers": {
+      "root": "libs/common-helpers",
+      "sourceRoot": "libs/common-helpers/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/common-helpers/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/common-helpers"],
+          "options": {
+            "jestConfig": "libs/common-helpers/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "implicitDependencies": {
+    "workspace.json": "*",
+    "package.json": { "dependencies": "*", "devDependencies": "*" },
+    "tsconfig.base.json": "*",
+    "tslint.json": "*",
+    ".eslintrc.json": "*",
+    "nx.json": "*"
+  },
+  "affected": { "defaultBase": "master" },
+  "npmScope": "hnrn-stack",
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": { "cacheableOperations": ["build", "lint", "test", "e2e"] }
+    }
+  },
+  "projects": {
+    "app-web": { "tags": [] },
+    "app-web-e2e": { "tags": [], "implicitDependencies": ["app-web"] },
+    "auth": { "tags": [] },
+    "hasura-graphql": { "tags": [] },
+    "custom-antd-form": { "tags": [] },
+    "app-admin": { "tags": [] },
+    "app-admin-e2e": { "tags": [], "implicitDependencies": ["app-admin"] },
+    "backend": { "tags": [] },
+    "hbp-sdk": { "tags": [] },
+    "hbp-client": { "tags": [] },
+    "common-configs": { "tags": [] },
+    "common-helpers": { "tags": [] }
+  }
+}
