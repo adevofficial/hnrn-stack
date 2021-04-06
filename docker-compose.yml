@@ -38,6 +38,7 @@ services:
       # ANONYMOUS_USERS_ENABLE: "true"
       # DEFAULT_ANONYMOUS_ROLE: "anonymous"
       LOST_PASSWORD_ENABLE: "true"
+      CHANGE_EMAIL_ENABLE: "true"
       EMAILS_ENABLE: "true"
       SMTP_HOST: "mailhog"
       SMTP_PORT: "1025"

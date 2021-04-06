@@ -55,7 +55,6 @@ export default function RegisterPage(props: RouteComponentProps) {
           </Form.Item>
           <Form.Item
             name="password"
-            style={{ marginBottom: 10 }}
             rules={[{ required: true, message: "Please input your Password!" }]}
           >
             <Input
