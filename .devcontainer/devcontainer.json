@@ -17,7 +17,10 @@
     "christian-kohler.npm-intellisense",
     "christian-kohler.path-intellisense",
     "esbenp.prettier-vscode",
-    "humao.rest-client"
+    "humao.rest-client",
+    "ms-vscode.vscode-typescript-tslint-plugin",
+    "esbenp.prettier-vscode",
+    "firsttris.vscode-jest-runner"
   ],
   "workspaceFolder": "/workspace",
   "remoteUser": "node",
